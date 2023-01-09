@@ -1,12 +1,8 @@
 import {AssetSource, definePlugin} from 'sanity'
 import {Base} from './components/Base'
 import {PexelsIcon, PixabayIcon} from './components/Icon'
-import type {ImageProviderType} from './types'
+import type {MyPluginConfig, ImageProviderType} from './types'
 import slug from 'slug'
-
-interface MyPluginConfig {
-  /* nothing here yet */
-}
 
 export function royaltyFreeAssetSource(imageProvider: ImageProviderType): AssetSource {
   return {
@@ -17,15 +13,17 @@ export function royaltyFreeAssetSource(imageProvider: ImageProviderType): AssetS
   }
 }
 
-export const royaltyFree = definePlugin<MyPluginConfig | void>((type: string) => {
-  return {
-    name: 'sanity-plugin-asset-source-royalty-free',
-    form: {
-      image: {
-        assetSources: (prev) => {
-          return [...prev, royaltyFreeAssetSource('Pexels')]
+export const royaltyFree = definePlugin<MyPluginConfig | void>(
+  (imageProvider: ImageProviderType) => {
+    return {
+      name: 'sanity-plugin-asset-source-royalty-free',
+      form: {
+        image: {
+          assetSources: (prev) => {
+            return [...prev, royaltyFreeAssetSource('Pexels')]
+          },
         },
       },
-    },
+    }
   }
-})
+)

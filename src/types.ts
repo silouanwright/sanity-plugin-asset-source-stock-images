@@ -1,13 +1,16 @@
 import type {AssetSourceComponentProps} from 'sanity'
 import {Image} from 'react-grid-gallery'
 
+/** Supported providers */
 export type ImageProviderType = 'Pexels' | 'Pixabay' | 'Unsplash'
 
+/** User provided configuration to customize royalty plugin */
+export interface MyPluginConfig {
+  imageProvider: ImageProviderType
+}
+
 export interface AssetSourceCompPropsExtendProps extends AssetSourceComponentProps {
-  /** User provided configuration to customize royalty plugin */
-  config: {
-    imageProvider: ImageProviderType
-  }
+  config: MyPluginConfig
 }
 
 export interface ExtendedImage extends Image {

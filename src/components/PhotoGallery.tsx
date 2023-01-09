@@ -1,5 +1,15 @@
 import {ChangeEvent, useCallback, useState} from 'react'
-import {Dialog, Box, Stack, Button, usePrefersDark, Spinner, TextInput, Card} from '@sanity/ui'
+import {
+  Dialog,
+  Box,
+  Stack,
+  Button,
+  usePrefersDark,
+  Spinner,
+  TextInput,
+  Card,
+  Flex,
+} from '@sanity/ui'
 import {createClient, Photo, ErrorResponse} from 'pexels'
 import {useInfiniteQuery} from '@tanstack/react-query'
 import {Gallery} from 'react-grid-gallery'
@@ -11,6 +21,7 @@ import qs from 'qs'
 
 const API_KEY = '563492ad6f9170000100000149862a1244444390bd1a26feec676661'
 const COUNT_PER_PAGE = 20
+const FIRST_PAGE = 1
 
 const client = createClient(API_KEY)
 const manualQuery = 'Orthodox Christianity'
@@ -21,7 +32,7 @@ export function isError(x: any): x is ErrorResponse {
   return !!x.error
 }
 
-async function fetchData({pageParam = 1}) {
+async function fetchData({pageParam = FIRST_PAGE}) {
   const data = await client.photos
     // The API wants camelcase. What do you want from me eslint?
     // eslint-disable-next-line camelcase
@@ -59,6 +70,7 @@ export function PhotoGallery({onSelect, onClose, config}: AssetSourceCompPropsEx
     })
 
   const [query, setQuery] = useState('')
+  // eslint-disable-next-line no-console
   console.log(query)
 
   const prefersDark = usePrefersDark()
@@ -102,7 +114,6 @@ export function PhotoGallery({onSelect, onClose, config}: AssetSourceCompPropsEx
   }, [])
 
   if (status === 'error' && error.message) return <p>Error: {error?.message}</p>
-  if (status === 'loading' || !flattenedPhotos) return <Spinner muted />
   return (
     <Dialog
       id="github-asset-source"
@@ -129,7 +140,6 @@ export function PhotoGallery({onSelect, onClose, config}: AssetSourceCompPropsEx
           <Card>
             <Box padding={3}>
               <TextInput
-                space={2}
                 label={`Search ${imageProvider}.com`}
                 placeholder="Search for free photos"
                 onChange={handleQueryChange}
@@ -139,23 +149,36 @@ export function PhotoGallery({onSelect, onClose, config}: AssetSourceCompPropsEx
             </Box>
           </Card>
         </div>
-        <Stack space={2}>
-          <Gallery
-            images={flattenedPhotos}
-            tagStyle={{...tagStyle, ...tagStyleTheme[scheme]}}
-            onSelect={handleSelect}
-          />
-          <Button
-            onClick={handleFetchMore}
-            disabled={!hasNextPage || isFetchingNextPage}
-            fontSize={2}
-            icon={PlusIcon}
-            mode="ghost"
-            padding={3}
-            text={buttonText()}
-          />
+        <Stack>
+          {status === 'loading' || !flattenedPhotos ? (
+            <Box padding={6}>
+              <Flex justify="center">
+                <Spinner muted />
+              </Flex>
+            </Box>
+          ) : (
+            <>
+              <Gallery
+                images={flattenedPhotos}
+                tagStyle={{...tagStyle, ...tagStyleTheme[scheme]}}
+                onSelect={handleSelect}
+              />
+              <Box padding={3}>
+                <Stack>
+                  <Button
+                    onClick={handleFetchMore}
+                    disabled={!hasNextPage || isFetchingNextPage}
+                    fontSize={2}
+                    icon={PlusIcon}
+                    mode="ghost"
+                    padding={3}
+                    text={buttonText()}
+                  />
+                </Stack>
+              </Box>
+            </>
+          )}
         </Stack>
-        <div>{isFetching && !isFetchingNextPage ? 'Fetching...' : null}</div>
       </>
     </Dialog>
   )
