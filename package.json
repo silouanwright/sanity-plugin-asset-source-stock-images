@@ -53,7 +53,8 @@
     "pexels": "^1.4.0",
     "qs": "^6.11.0",
     "react-grid-gallery": "^1.0.0",
-    "slug": "^8.2.2"
+    "slug": "^8.2.2",
+    "throttle-debounce": "^5.0.0"
   },
   "devDependencies": {
     "@sanity/pkg-utils": "^2.0.7",
@@ -61,6 +62,7 @@
     "@types/qs": "^6.9.7",
     "@types/react": "^18.0.26",
     "@types/slug": "^5.0.3",
+    "@types/throttle-debounce": "^5.0.0",
     "@typescript-eslint/eslint-plugin": "^5.48.0",
     "@typescript-eslint/parser": "^5.48.0",
     "eslint": "^8.31.0",

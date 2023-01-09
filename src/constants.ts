@@ -1,0 +1,3 @@
+export const API_KEY = '563492ad6f9170000100000149862a1244444390bd1a26feec676661'
+export const COUNT_PER_PAGE = 20
+export const FIRST_PAGE = 1

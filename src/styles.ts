@@ -6,6 +6,7 @@ export const tagStyle = {
   lineHeight: '1.2',
   verticalAlign: 'baseline',
   borderRadius: '0.25em',
+  'overflow-wrap': 'break-work',
 }
 
 export const tagStyleTheme = {
