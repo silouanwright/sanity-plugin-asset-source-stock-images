@@ -1,4 +1,6 @@
-export const tagStyle = {
+import type {CSSProperties} from 'react'
+
+export const tagStyle: CSSProperties = {
   display: 'inline-block',
   padding: '0.2em 0.6em 0.3em',
   fontSize: '60%',
@@ -6,7 +8,7 @@ export const tagStyle = {
   lineHeight: '1.2',
   verticalAlign: 'baseline',
   borderRadius: '0.25em',
-  'overflow-wrap': 'break-work',
+  overflowWrap: 'break-word',
 }
 
 export const tagStyleTheme = {

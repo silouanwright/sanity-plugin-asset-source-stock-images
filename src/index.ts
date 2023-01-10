@@ -20,7 +20,7 @@ export const royaltyFree = definePlugin<MyPluginConfig | void>(
       form: {
         image: {
           assetSources: (prev) => {
-            return [...prev, royaltyFreeAssetSource('Pexels')]
+            return [...prev, royaltyFreeAssetSource('Pixabay')]
           },
         },
       },

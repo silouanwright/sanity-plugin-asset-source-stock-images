@@ -1,9 +1,9 @@
 import qs from 'qs'
 import {createClient, Photo, ErrorResponse} from 'pexels'
 import type {Page, ExtendedImage} from '../types'
-import {COUNT_PER_PAGE, FIRST_PAGE, API_KEY} from '../constants'
+import {COUNT_PER_PAGE, FIRST_PAGE, PEXELS_API_KEY} from '../constants'
 
-const client = createClient(API_KEY)
+const client = createClient(PEXELS_API_KEY)
 
 // We don't like "any" in TS. Not sure how to remove it from here though.
 // This comes directly from the Pexels library too
