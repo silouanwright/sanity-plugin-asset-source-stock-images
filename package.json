@@ -47,8 +47,9 @@
   },
   "dependencies": {
     "@sanity/incompatible-plugin": "^1.0.4",
+    "@sanity/studio-secrets": "^2.0.2",
     "@sanity/ui": "^1.0.9",
-    "@tanstack/react-query": "^4.20.4",
+    "@tanstack/react-query": "4.22.0",
     "lucide-react": "^0.105.0-alpha.4",
     "pexels": "^1.4.0",
     "qs": "^6.11.0",

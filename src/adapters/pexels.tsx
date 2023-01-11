@@ -1,14 +1,20 @@
 import qs from 'qs'
 import {createClient, Photo, ErrorResponse} from 'pexels'
 import type {Page, ExtendedImage} from '../types'
-import {COUNT_PER_PAGE, FIRST_PAGE, PEXELS_API_KEY} from '../constants'
+import {COUNT_PER_PAGE} from '../constants'
 
-const client = createClient(PEXELS_API_KEY)
+let client: any
 
 // We don't like "any" in TS. Not sure how to remove it from here though.
 // This comes directly from the Pexels library too
 export function isError(x: any): x is ErrorResponse {
   return !!x.error
+}
+
+export const secretPexelsConfig = {
+  key: 'pexelsAPIKey',
+  title: 'Enter your secret API key. Docs are located at https://pixabay.com/api/docs/',
+  description: 'nice description!',
 }
 
 export const extractPagePexels = (url: string): string | null => {
@@ -22,14 +28,16 @@ export const extractPagePexels = (url: string): string | null => {
 }
 
 export async function fetchDataPexels(
-  pageParam: number = FIRST_PAGE,
-  query: string
+  pageParam: number = 1,
+  query: string,
+  apiKey: string
 ): Promise<Page> {
+  client = client || createClient(apiKey)
   const data = await client.photos
     // The API wants camelcase. What do you want from me eslint?
     // eslint-disable-next-line camelcase
     .search({query, per_page: COUNT_PER_PAGE, page: pageParam})
-    .then((photos) => photos)
+    .then((photos: Photo[]) => photos)
 
   if (isError(data)) return Promise.reject(new Error(data.error))
 

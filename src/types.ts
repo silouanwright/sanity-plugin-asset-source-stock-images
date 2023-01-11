@@ -1,18 +1,19 @@
 import type {AssetSourceComponentProps} from 'sanity'
 import {Image} from 'react-grid-gallery'
+import {ReactElement} from 'react'
 
 /** Supported providers */
 export type ImageProviderType = 'Pexels' | 'Pixabay' | 'Unsplash'
-
-/** User provided configuration to customize royalty plugin */
-export interface MyPluginConfig {
-  imageProvider: ImageProviderType
+export interface Foo {
+  pexelsAPIKey: string
+  pixabayAPIKey: string
 }
 
-export interface AssetSourceCompPropsExtendProps extends AssetSourceComponentProps {
-  config: MyPluginConfig
+export type Secrets = {
+  key: string
+  title: string
+  description: string
 }
-
 export interface ExtendedImage extends Image {
   // react-grid-gallery does not use this prop. We add it so that
   // we can hand it to Sanity on image selection, without needing
@@ -24,7 +25,43 @@ export interface ExtendedImage extends Image {
   highResImageToUpload: string
 }
 
+export type FooKeys = keyof Foo
+
 export interface Page {
   allPhotos: ExtendedImage[]
   nextPage: string
+}
+export interface Blah {
+  apiKey: FooKeys
+  ProviderIcon: () => ReactElement
+  configKeys: Secrets[]
+  fetchData: (pageParam: number | undefined, query: string, apiKey: string) => Promise<Page>
+  extractor: (url: string) => string | null
+  secretKey: FooKeys
+  title: string
+}
+
+export interface GalleryUIProps {
+  imageProvider: ImageProviderType
+  handleClose: () => void
+  debounceHandler: any
+  handleSelect: (index: number, image: ExtendedImage) => void
+  handleFetchMore: () => void
+  hasNextPage: boolean | undefined
+  isFetchingNextPage: boolean
+  noResults: boolean | ''
+  flattenedPhotos: ExtendedImage[] | undefined
+}
+
+/** User provided configuration to customize royalty plugin */
+export interface MyPluginConfig {
+  imageProvider: ImageProviderType
+}
+
+export interface AssetSourceCompPropsExtendProps extends AssetSourceComponentProps {
+  config: MyPluginConfig
+}
+
+export interface AssetSourceCompSuperExtendProps extends AssetSourceCompPropsExtendProps {
+  apiKey: string
 }

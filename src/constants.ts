@@ -1,4 +1,4 @@
-export const PEXELS_API_KEY = '563492ad6f9170000100000149862a1244444390bd1a26feec676661'
-export const PIXABAY_API_KEY = '32563583-6f40618199f98cae6d45327f5'
 export const COUNT_PER_PAGE = 20
-export const FIRST_PAGE = 1
+export const DEFAULT_QUERY = 'apples'
+// a day (seconds in minute x milliseconds + amount)
+export const CACHE_TIME = 1 * 1440 * (60 * 1000)
