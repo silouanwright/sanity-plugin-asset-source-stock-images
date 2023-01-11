@@ -1,13 +1,13 @@
 import {AssetSource, definePlugin} from 'sanity'
 import {Base} from './components/Base'
 import type {MyPluginConfig, ImageProviderType} from './types'
-import slug from 'slug'
 import {determine} from './adapters'
 
 export function stockImageAssetSource(imageProvider: ImageProviderType): AssetSource {
   return {
     title: imageProvider,
-    name: slug(imageProvider),
+    // Add slug utility here when provider names get more complex
+    name: imageProvider.toLowerCase(),
     component: (all) => Base({config: {imageProvider}, ...all}),
     icon: determine(imageProvider).ProviderIcon,
   }

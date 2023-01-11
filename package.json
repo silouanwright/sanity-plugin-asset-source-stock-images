@@ -54,7 +54,6 @@
     "pexels": "^1.4.0",
     "qs": "^6.11.0",
     "react-grid-gallery": "^1.0.0",
-    "slug": "^8.2.2",
     "throttle-debounce": "^5.0.0"
   },
   "devDependencies": {
