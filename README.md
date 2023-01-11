@@ -32,11 +32,15 @@ export default defineConfig({
 ## Notes
 
 - You will be prompted for your API key on the first launch of the plugin within Sanity Studio. You can't reset the key, unless you manually edit your dataset (for now) 
+- This plugin took me a good deal of time to create and I'm open sourcing it:
+please consider adding improvements if you enjoy it, or please consider
+throwing some fun freelance projects my way!
 
 ## Todo
 
-- [ ] Add infinite scrolling
-- [ ] Add ability to reset api key in interface easily
+- Add infinite scrolling
+- Add some configurability (theming, naming, querying, etc)
+- Add ability to reset api key in interface easily
 
 ## License
 
