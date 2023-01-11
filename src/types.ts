@@ -53,7 +53,7 @@ export interface GalleryUIProps {
   flattenedPhotos: ExtendedImage[] | undefined
 }
 
-/** User provided configuration to customize royalty plugin */
+/** User provided configuration */
 export interface MyPluginConfig {
   imageProvider: ImageProviderType
 }

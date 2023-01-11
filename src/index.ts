@@ -13,9 +13,9 @@ export function stockImageAssetSource(imageProvider: ImageProviderType): AssetSo
   }
 }
 
-export const pixabayStockImageAsset = definePlugin<MyPluginConfig | void>(() => {
+export const pixabayStockImagesAsset = definePlugin<MyPluginConfig | void>(() => {
   return {
-    name: 'sanity-plugin-asset-source-pixabay-stock-image',
+    name: 'sanity-plugin-asset-source-pixabay-stock-images',
     form: {
       image: {
         assetSources: (prev) => {
@@ -26,9 +26,9 @@ export const pixabayStockImageAsset = definePlugin<MyPluginConfig | void>(() => 
   }
 })
 
-export const pexelsStockImageAsset = definePlugin<MyPluginConfig | void>(() => {
+export const pexelsStockImagesAsset = definePlugin<MyPluginConfig | void>(() => {
   return {
-    name: 'sanity-plugin-asset-source-pexels-stock-image',
+    name: 'sanity-plugin-asset-source-pexels-stock-images',
     form: {
       image: {
         assetSources: (prev) => {
