@@ -1,6 +1,6 @@
 import {SettingsView} from '@sanity/studio-secrets'
 import type {ImageProviderType} from '../types'
-import {determine} from '../adapters'
+import {determineProviderData} from '../adapters'
 
 export const namespace = 'stockImageAssets'
 
@@ -16,6 +16,6 @@ type Props = {
 }
 
 export const SecretsConfigView = ({onClose, imageProvider}: Props) => {
-  const {title, configKeys} = determine(imageProvider)
+  const {title, configKeys} = determineProviderData(imageProvider)
   return <SettingsView title={title} namespace={namespace} keys={configKeys} onClose={onClose} />
 }

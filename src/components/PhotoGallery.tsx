@@ -4,12 +4,12 @@ import type {Page, ExtendedImage, AssetSourceCompSuperExtendProps} from '../type
 import {debounce} from 'throttle-debounce'
 import {PhotoGalleryUI} from './PhotoGalleryUI'
 import {CACHE_TIME, DEFAULT_QUERY} from '../constants'
-import {determine} from '../adapters'
+import {determineProviderData} from '../adapters'
 
 export function PhotoGallery({onSelect, onClose, config, apiKey}: AssetSourceCompSuperExtendProps) {
   const {imageProvider} = config
   const [searchInput, setSearchInput] = useState(DEFAULT_QUERY)
-  const {extractor, fetchData} = determine(imageProvider)
+  const {extractor, fetchData} = determineProviderData(imageProvider)
 
   const {data, error, fetchNextPage, hasNextPage, isFetchingNextPage, status} = useInfiniteQuery<
     Page,
@@ -22,6 +22,9 @@ export function PhotoGallery({onSelect, onClose, config, apiKey}: AssetSourceCom
       const url = lastPage.nextPage
       return extractor(url)
     },
+    // The only reason this is not true, is because if the data is not replaced,
+    // the scroll position is at the bottom needs to be reset to the top when
+    // the data actually loads in, and I didn't find this easy to do.
     keepPreviousData: false,
     cacheTime: CACHE_TIME,
   })
@@ -72,6 +75,7 @@ export function PhotoGallery({onSelect, onClose, config, apiKey}: AssetSourceCom
       handleFetchMore={handleFetchMore}
       isFetchingNextPage={isFetchingNextPage}
       noResults={noResults}
+      status={status}
     />
   )
 }

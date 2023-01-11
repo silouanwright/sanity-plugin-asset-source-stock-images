@@ -1,9 +1,8 @@
-import {PexelsIcon, PixabayIcon} from '../components/Icon'
-import {Blah, ImageProviderType} from '../types'
-import {extractPagePexels, fetchDataPexels, secretPexelsConfig} from './pexels'
-import {extractPagePixabay, fetchDataPixabay, secretPixabayConfig} from './pixabay'
+import {ProviderData, ImageProviderType} from '../types'
+import {extractPagePexels, fetchDataPexels, secretPexelsConfig, PexelsIcon} from './pexels'
+import {extractPagePixabay, fetchDataPixabay, secretPixabayConfig, PixabayIcon} from './pixabay'
 
-export const determine = (provider: ImageProviderType): Blah => {
+export const determineProviderData = (provider: ImageProviderType): ProviderData => {
   switch (provider) {
     case 'Pexels':
       return {

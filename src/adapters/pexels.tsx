@@ -2,6 +2,7 @@ import qs from 'qs'
 import {createClient, Photo, ErrorResponse} from 'pexels'
 import type {Page, ExtendedImage} from '../types'
 import {COUNT_PER_PAGE} from '../constants'
+import {BaseSVG} from '../components/Icon'
 
 let client: any
 
@@ -13,7 +14,7 @@ export function isError(x: any): x is ErrorResponse {
 
 export const secretPexelsConfig = {
   key: 'pexelsAPIKey',
-  title: 'Enter your secret API key. Docs are located at https://pixabay.com/api/docs/',
+  title: 'Enter your secret API key. Docs are located at https://www.pexels.com/api/',
   description: 'nice description!',
 }
 
@@ -52,4 +53,15 @@ export async function fetchDataPexels(
   )
 
   return {allPhotos, nextPage: data.next_page}
+}
+
+export function PexelsIcon() {
+  return (
+    <BaseSVG>
+      <path
+        fill="currentColor"
+        d="M4.314 2.011 4 2.026l.003 9.938c.003 5.466.006 9.96.009 9.987.003.046.484.049 5.498.049h5.493L15 19.278c-.003-2.463.003-2.726.045-2.738.045-.012.134-.03.296-.064.9-.174 2.039-.71 2.861-1.353a8.272 8.272 0 0 0 1.244-1.253c.215-.284.505-.71.505-.747 0-.012.024-.058.057-.1.087-.126.308-.57.428-.86.239-.586.424-1.247.487-1.738.009-.076.024-.17.03-.214.063-.371.063-1.408 0-1.768-.006-.042-.021-.137-.03-.213a1.735 1.735 0 0 0-.036-.198.875.875 0 0 1-.024-.137c-.012-.113-.122-.534-.224-.857a8.257 8.257 0 0 0-.724-1.579c-.12-.198-.547-.79-.69-.957a7.332 7.332 0 0 0-1.564-1.366c-.114-.073-.236-.152-.27-.17a9.237 9.237 0 0 0-.983-.476 7.392 7.392 0 0 0-1.51-.403 5.952 5.952 0 0 0-.792-.064c-.568-.021-9.37-.033-9.792-.012Zm9.956 2.875c.057.009.174.027.255.036.083.013.176.028.209.037l.128.027c.18.037.65.217.888.339a4.406 4.406 0 0 1 2.09 2.231c.111.253.225.6.249.75.006.049.027.14.041.201.1.39.09 1.208-.017 1.72-.368 1.759-1.738 3.146-3.424 3.472-.377.073-.604.088-1.582.091l-.906.004v5.35h-.484c-.52.003-4.428.003-4.733 0h-.188v-7.128c0-3.92.006-7.136.012-7.142.02-.019 7.343-.006 7.462.012Z"
+      />
+    </BaseSVG>
+  )
 }

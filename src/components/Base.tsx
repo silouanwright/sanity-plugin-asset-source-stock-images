@@ -1,16 +1,16 @@
 import {QueryClient, QueryClientProvider} from '@tanstack/react-query'
 import {PhotoGallery} from './PhotoGallery'
 import {useSecrets} from '@sanity/studio-secrets'
-import type {AssetSourceCompPropsExtendProps, Foo} from '../types'
+import type {AssetSourceCompPropsExtendProps, ProviderKeyObj} from '../types'
 import {SecretsConfigView, namespace} from './SecretsConfigView'
 import {useCallback, useEffect, useState} from 'react'
-import {determine} from '../adapters'
+import {determineProviderData} from '../adapters'
 
 export function Base({config, ...rest}: AssetSourceCompPropsExtendProps) {
   const queryClient = new QueryClient()
   const [showSettings, setShowSettings] = useState(false)
-  const {secrets} = useSecrets<Foo>(namespace)
-  const {apiKey} = determine(config.imageProvider)
+  const {secrets} = useSecrets<ProviderKeyObj>(namespace)
+  const {apiKey} = determineProviderData(config.imageProvider)
 
   // Without setTimeout, secrets will be undefined, which will cause the modal
   // to show, even if the API key is available. setTimeout puts it on the

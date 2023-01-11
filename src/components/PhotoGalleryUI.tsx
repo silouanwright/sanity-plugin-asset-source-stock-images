@@ -12,7 +12,7 @@ import {
 import {PlusIcon} from 'lucide-react'
 import {useCallback} from 'react'
 import {Gallery} from 'react-grid-gallery'
-import {determine} from '../adapters'
+import {determineProviderData} from '../adapters'
 import {tagStyle, tagStyleTheme} from '../styles'
 import {GalleryUIProps} from '../types'
 
@@ -26,10 +26,11 @@ export const PhotoGalleryUI = ({
   hasNextPage,
   isFetchingNextPage,
   noResults,
+  status,
 }: GalleryUIProps) => {
   const prefersDark = usePrefersDark()
   const scheme = prefersDark ? 'dark' : 'light'
-  const {ProviderIcon} = determine(imageProvider)
+  const {ProviderIcon} = determineProviderData(imageProvider)
 
   const buttonText = useCallback(() => {
     if (isFetchingNextPage) return 'Loading more...'

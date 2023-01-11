@@ -4,12 +4,12 @@ import {ReactElement} from 'react'
 
 /** Supported providers */
 export type ImageProviderType = 'Pexels' | 'Pixabay' | 'Unsplash'
-export interface Foo {
+export interface ProviderKeyObj {
   pexelsAPIKey: string
   pixabayAPIKey: string
 }
 
-export type Secrets = {
+export type SanitySecretField = {
   key: string
   title: string
   description: string
@@ -25,23 +25,24 @@ export interface ExtendedImage extends Image {
   highResImageToUpload: string
 }
 
-export type FooKeys = keyof Foo
+export type ProviderKeyUnion = keyof ProviderKeyObj
 
 export interface Page {
   allPhotos: ExtendedImage[]
   nextPage: string
 }
-export interface Blah {
-  apiKey: FooKeys
+export interface ProviderData {
+  apiKey: ProviderKeyUnion
   ProviderIcon: () => ReactElement
-  configKeys: Secrets[]
+  configKeys: SanitySecretField[]
   fetchData: (pageParam: number | undefined, query: string, apiKey: string) => Promise<Page>
   extractor: (url: string) => string | null
-  secretKey: FooKeys
+  secretKey: ProviderKeyUnion
   title: string
 }
 
 export interface GalleryUIProps {
+  status: 'loading' | 'error' | 'success'
   imageProvider: ImageProviderType
   handleClose: () => void
   debounceHandler: any

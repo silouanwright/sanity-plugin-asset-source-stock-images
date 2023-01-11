@@ -15,7 +15,7 @@ Search for photos in Pexels & Pixabay (Unsplash support is coming) and add them 
 npm install sanity-plugin-asset-source-stock-images
 ```
 
-## Usage
+## Usage in code
 
 Import & add the image providers you want as plugins in `sanity.config.ts` (or .js):
 
@@ -29,9 +29,14 @@ export default defineConfig({
 })
 ```
 
+## Usage in Studio
+- Clicking on the white checkmark selects the photo for upload (this allows for clicking on the photo itself in the future to render a lightbox)
+
 ## Notes
 
-- You will be prompted for your API key on the first launch of the plugin within Sanity Studio. You can't reset the key, unless you manually edit your dataset (for now) 
+- You will be prompted for an API token for each unique plugin upon use of that plugin. 
+  - Pexels API docs: https://www.pexels.com/api/
+  - Pixabay API: https://pixabay.com/api/docs/
 - This plugin took me a good deal of time to create and I'm open sourcing it:
 please consider adding improvements if you enjoy it, or please consider
 throwing some fun freelance projects my way!
@@ -39,7 +44,7 @@ throwing some fun freelance projects my way!
 ## Todo
 
 - Add infinite scrolling
-- Add some configurability (theming, naming, querying, etc)
+- Add some configurability (theming, naming, querying, amount of reuslts per page, etc)
 - Add ability to reset api key in interface easily
 
 ## License
