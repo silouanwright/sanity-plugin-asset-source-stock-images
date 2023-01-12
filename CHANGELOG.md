@@ -5,6 +5,13 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.0](https://github.com/reywright/sanity-plugin-asset-source-stock-images/compare/v1.0.0...v1.1.0) (2023-01-12)
+
+### Features
+
+- added button to change API Token ([1fa9b98](https://github.com/reywright/sanity-plugin-asset-source-stock-images/commit/1fa9b989102faa972e22b2c27f01d77adce3bf98))
+- tweaked tag styles ([fbf1af1](https://github.com/reywright/sanity-plugin-asset-source-stock-images/commit/fbf1af14c24a9d4e8b50c83cdac148cd38bfad51))
+
 ## 1.0.0 (2023-01-11)
 
 ### Bug Fixes
