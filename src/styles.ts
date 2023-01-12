@@ -14,7 +14,7 @@ export const tagStyle: CSSProperties = {
 export const tagStyleTheme = {
   light: {
     color: 'white',
-    backgroundlor: 'rgba(26,26,26.8)',
+    backgroundColor: 'rgba(26,26,26.8)',
   },
   dark: {
     color: 'white',

@@ -33,6 +33,7 @@ export interface Page {
 }
 export interface ProviderData {
   apiKey: ProviderKeyUnion
+  homepage: string
   ProviderIcon: () => ReactElement
   configKeys: SanitySecretField[]
   fetchData: (pageParam: number | undefined, query: string, apiKey: string) => Promise<Page>

@@ -71,6 +71,7 @@ export const pixabayProviderData: ProviderData = {
   apiKey: 'pixabayAPIKey',
   secretKey: 'pixabayAPIKey',
   title: 'Enter your Pixabay API token',
+  homepage: 'https://pixabay.com',
   configKeys: [
     {
       key: 'pixabayAPIKey',

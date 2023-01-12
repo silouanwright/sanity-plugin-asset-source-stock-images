@@ -31,7 +31,7 @@ export const PhotoGalleryUI = ({
 }: GalleryUIProps) => {
   const prefersDark = usePrefersDark()
   const scheme = prefersDark ? 'dark' : 'light'
-  const {ProviderIcon} = determineProviderData(imageProvider)
+  const {ProviderIcon, homepage} = determineProviderData(imageProvider)
 
   const buttonText = useCallback(() => {
     if (isFetchingNextPage) return 'Loading more...'
@@ -49,12 +49,12 @@ export const PhotoGalleryUI = ({
       id="github-asset-source"
       header={
         <Flex justify="space-between" align="center">
-          <span>
+          <a href={homepage} target="_blank" rel="noreferrer noopener" style={{color: 'inherit'}}>
             <span style={{marginRight: 10}}>
               <ProviderIcon />
             </span>
             Select image from {imageProvider}
-          </span>
+          </a>
           <Button
             text="API token"
             padding={2}

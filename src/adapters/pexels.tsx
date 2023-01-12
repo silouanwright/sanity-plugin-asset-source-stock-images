@@ -64,6 +64,7 @@ export const pexelsProviderData: ProviderData = {
   fetchData: fetchDataPexels,
   extractor: extractPagePexels,
   ProviderIcon: PexelsIcon,
+  homepage: 'https://www.pixabay.com',
   apiKey: 'pexelsAPIKey',
   secretKey: 'pexelsAPIKey',
   title: 'Enter your Pexels API token',
