@@ -8,6 +8,7 @@ Search for photos in Pexels & Pixabay (Unsplash support is coming) and add them 
 
 ![Stock Images interface](assets/interface.png)
 ![Stock Images menu](assets/menu.png)
+![Stock Images token prompt](assets/token.png)
 
 ## Installation
 

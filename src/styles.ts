@@ -17,7 +17,7 @@ export const tagStyleTheme = {
     backgroundlor: 'rgba(26,26,26.8)',
   },
   dark: {
-    color: 'rgba(255,255,255,.8)',
+    color: 'white',
     backgroundColor: 'rgba(26,26,26,.8)',
   },
 }
