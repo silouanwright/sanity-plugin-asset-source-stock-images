@@ -5,6 +5,12 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.0](https://github.com/reywright/sanity-plugin-asset-source-stock-images/compare/v1.1.0...v1.2.0) (2023-01-12)
+
+### Features
+
+- added link to image provider ([2601359](https://github.com/reywright/sanity-plugin-asset-source-stock-images/commit/2601359c4a90ee1423786c697cb62fb9de93d6b5))
+
 ## [1.1.0](https://github.com/reywright/sanity-plugin-asset-source-stock-images/compare/v1.0.0...v1.1.0) (2023-01-12)
 
 ### Features
