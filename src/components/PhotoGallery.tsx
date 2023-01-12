@@ -6,7 +6,13 @@ import {PhotoGalleryUI} from './PhotoGalleryUI'
 import {CACHE_TIME, DEFAULT_QUERY} from '../constants'
 import {determineProviderData} from '../adapters'
 
-export function PhotoGallery({onSelect, onClose, config, apiKey}: AssetSourceCompSuperExtendProps) {
+export function PhotoGallery({
+  onSelect,
+  onClose,
+  config,
+  apiKey,
+  setShowSettings,
+}: AssetSourceCompSuperExtendProps) {
   const {imageProvider} = config
   const [searchInput, setSearchInput] = useState(DEFAULT_QUERY)
   const {extractor, fetchData} = determineProviderData(imageProvider)
@@ -76,6 +82,7 @@ export function PhotoGallery({onSelect, onClose, config, apiKey}: AssetSourceCom
       isFetchingNextPage={isFetchingNextPage}
       noResults={noResults}
       status={status}
+      setShowSettings={setShowSettings}
     />
   )
 }

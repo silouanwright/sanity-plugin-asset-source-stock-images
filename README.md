@@ -30,7 +30,7 @@ export default defineConfig({
 ```
 
 ## Usage in Studio
-- Clicking on the white checkmark selects the photo for upload (this allows for clicking on the photo itself in the future to render a lightbox)
+- Clicking on the white checkmark selects the photo for upload (this will allow for clicking on the photo itself in the future to render a lightbox)
 
 ## Notes
 
@@ -44,8 +44,9 @@ throwing some fun freelance projects my way!
 ## Todo
 
 - Add infinite scrolling
-- Add some configurability (theming, naming, querying, amount of reuslts per page, etc)
-- Add ability to reset api key in interface easily
+- Add some configurability (theming, naming, querying, amount of results per page, etc)
+- ~~Add ability to reset api key in interface easily~~
+- Remove pexels-api, hit API directly
 
 ## License
 

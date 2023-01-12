@@ -52,6 +52,7 @@ export interface GalleryUIProps {
   isFetchingNextPage: boolean
   noResults: boolean | ''
   flattenedPhotos: ExtendedImage[] | undefined
+  setShowSettings: (bool: boolean) => void
 }
 
 /** User provided configuration */
@@ -65,4 +66,5 @@ export interface AssetSourceCompPropsExtendProps extends AssetSourceComponentPro
 
 export interface AssetSourceCompSuperExtendProps extends AssetSourceCompPropsExtendProps {
   apiKey: string
+  setShowSettings: (bool: boolean) => void
 }

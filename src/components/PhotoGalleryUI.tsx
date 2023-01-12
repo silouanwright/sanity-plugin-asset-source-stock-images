@@ -9,7 +9,7 @@ import {
   Flex,
   usePrefersDark,
 } from '@sanity/ui'
-import {PlusIcon} from 'lucide-react'
+import {LockIcon, PlusIcon} from 'lucide-react'
 import {useCallback} from 'react'
 import {Gallery} from 'react-grid-gallery'
 import {determineProviderData} from '../adapters'
@@ -26,6 +26,7 @@ export const PhotoGalleryUI = ({
   hasNextPage,
   isFetchingNextPage,
   noResults,
+  setShowSettings,
   status,
 }: GalleryUIProps) => {
   const prefersDark = usePrefersDark()
@@ -39,16 +40,30 @@ export const PhotoGalleryUI = ({
     return 'No more results'
   }, [hasNextPage, isFetchingNextPage, noResults])
 
+  const handleOnClick = useCallback(() => {
+    setShowSettings(true)
+  }, [setShowSettings])
+
   return (
     <Dialog
       id="github-asset-source"
       header={
-        <>
-          <span style={{marginRight: 10}}>
-            <ProviderIcon />
+        <Flex justify="space-between" align="center">
+          <span>
+            <span style={{marginRight: 10}}>
+              <ProviderIcon />
+            </span>
+            Select image from {imageProvider}
           </span>
-          Select image from {imageProvider}
-        </>
+          <Button
+            text="API token"
+            padding={2}
+            fontSize={1}
+            mode="bleed"
+            icon={<LockIcon size={14} />}
+            onClick={handleOnClick}
+          />
+        </Flex>
       }
       onClose={handleClose}
       width={4}

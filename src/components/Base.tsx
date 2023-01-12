@@ -38,7 +38,12 @@ export function Base({config, ...rest}: AssetSourceCompPropsExtendProps) {
       )}
       {!showSettings && secrets && secrets[apiKey] && (
         <QueryClientProvider client={queryClient}>
-          <PhotoGallery config={config} apiKey={secrets[apiKey]} {...rest} />
+          <PhotoGallery
+            config={config}
+            apiKey={secrets[apiKey]}
+            setShowSettings={setShowSettings}
+            {...rest}
+          />
         </QueryClientProvider>
       )}
     </>

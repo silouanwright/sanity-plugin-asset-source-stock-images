@@ -14,10 +14,10 @@ export const tagStyle: CSSProperties = {
 export const tagStyleTheme = {
   light: {
     color: 'white',
-    background: 'rgba(0, 0, 0, 0.25)',
+    backgroundlor: 'rgba(26,26,26.8)',
   },
   dark: {
-    color: 'yellow',
-    background: 'rgba(0, 0, 0, 0.65)',
+    color: 'rgba(255,255,255,.8)',
+    backgroundColor: 'rgba(26,26,26,.8)',
   },
 }

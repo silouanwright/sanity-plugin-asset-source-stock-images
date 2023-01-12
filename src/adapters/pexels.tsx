@@ -1,6 +1,6 @@
 import qs from 'qs'
 import {createClient, Photo, ErrorResponse} from 'pexels'
-import type {Page, ExtendedImage} from '../types'
+import type {Page, ExtendedImage, ProviderData} from '../types'
 import {COUNT_PER_PAGE} from '../constants'
 import {BaseSVG} from '../components/Icon'
 
@@ -10,12 +10,6 @@ let client: any
 // This comes directly from the Pexels library too
 export function isError(x: any): x is ErrorResponse {
   return !!x.error
-}
-
-export const secretPexelsConfig = {
-  key: 'pexelsAPIKey',
-  title: 'Enter your secret API key. Docs are located at https://www.pexels.com/api/',
-  description: 'nice description!',
 }
 
 export const extractPagePexels = (url: string): string | null => {
@@ -64,4 +58,21 @@ export function PexelsIcon() {
       />
     </BaseSVG>
   )
+}
+
+export const pexelsProviderData: ProviderData = {
+  fetchData: fetchDataPexels,
+  extractor: extractPagePexels,
+  ProviderIcon: PexelsIcon,
+  apiKey: 'pexelsAPIKey',
+  secretKey: 'pexelsAPIKey',
+  title: 'Enter your Pexels API token',
+  configKeys: [
+    {
+      key: 'pexelsAPIKey',
+      title: 'https://www.pexels.com/api/',
+      description:
+        'Editors generally should not touch this field. An incorrectly modified token can break the plugin.',
+    },
+  ],
 }

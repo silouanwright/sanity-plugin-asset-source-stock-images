@@ -1,5 +1,5 @@
 import qs from 'qs'
-import type {Page, ExtendedImage} from '../types'
+import type {Page, ExtendedImage, ProviderData} from '../types'
 import {COUNT_PER_PAGE} from '../constants'
 import {BaseSVG} from '../components/Icon'
 
@@ -9,12 +9,6 @@ interface PixabayPhoto {
   imageHeight: number
   imageWidth: number
   user: string
-}
-
-export const secretPixabayConfig = {
-  key: 'pixabayAPIKey',
-  title: 'Enter your secret API key. Docs are located at https://pixabay.com/api/docs/',
-  description: 'nice description!',
 }
 
 export function PixabayIcon() {
@@ -68,4 +62,21 @@ export async function fetchDataPixabay(
 export const extractPagePixabay = (url: string): string | null => {
   if (url === '') return null
   return url
+}
+
+export const pixabayProviderData: ProviderData = {
+  fetchData: fetchDataPixabay,
+  extractor: extractPagePixabay,
+  ProviderIcon: PixabayIcon,
+  apiKey: 'pixabayAPIKey',
+  secretKey: 'pixabayAPIKey',
+  title: 'Enter your Pixabay API token',
+  configKeys: [
+    {
+      key: 'pixabayAPIKey',
+      title: 'https://pixabay.com/api/docs/',
+      description:
+        'Editors generally should not touch this field. An incorrectly modified token can break the plugin.',
+    },
+  ],
 }
